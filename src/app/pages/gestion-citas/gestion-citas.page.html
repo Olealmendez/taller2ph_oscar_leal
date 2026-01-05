@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Gestión de citas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <ion-card color="light"> 
+    <ion-card-header>
+      <ion-card-subtitle>Crea una nueva cita</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="formulario" (ngSubmit)="agregar()">
+        
+        <ion-item class="ion-margin-bottom" lines="none" style="--background: white; border-radius: 5px;">
+          <ion-label position="floating" color="medium">Cita</ion-label>
+          <ion-textarea formControlName="texto" rows="3"></ion-textarea>
+        </ion-item>
+        <ion-text color="danger" *ngIf="formulario.get('texto')?.errors?.['minlength'] && formulario.get('texto')?.touched">
+          <small style="display:block; margin-bottom: 10px;">Mínimo 5 caracteres.</small>
+        </ion-text>
+
+        <ion-item lines="none" style="--background: white; border-radius: 5px;">
+          <ion-label position="floating" color="medium">Autor</ion-label>
+          <ion-input formControlName="autor"></ion-input>
+        </ion-item>
+         <ion-text color="danger" *ngIf="formulario.get('autor')?.errors?.['minlength'] && formulario.get('autor')?.touched">
+          <small>Mínimo 2 caracteres.</small>
+        </ion-text>
+
+        <ion-button expand="block" fill="clear" type="submit" [disabled]="formulario.invalid">
+          AGREGAR +
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list lines="full">
+    <ion-item *ngFor="let c of citas">
+      <ion-label class="ion-text-wrap">
+        <h2>{{ c.texto }}</h2>
+        <p style="text-align: right; font-size: 0.8rem; color: gray;">{{ c.autor }}</p>
+      </ion-label>
+      <ion-button slot="end" fill="clear" color="primary" (click)="eliminar(c.id)">
+        <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

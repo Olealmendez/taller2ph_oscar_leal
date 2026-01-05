@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Citas</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/configuracion">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="center-content" *ngIf="citaActual">
+    <app-cita-card 
+      [cita]="citaActual" 
+      [mostrarBotonEliminar]="permitirBorrar"
+      (eliminar)="eliminar($event)">
+    </app-cita-card>
+  </div>
+
+  <div *ngIf="!citaActual" class="ion-text-center ion-padding-top">
+    <p>No hay citas. ¡Agrega una!</p>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" class="ion-margin-bottom">
+    <ion-fab-button routerLink="/gestion">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

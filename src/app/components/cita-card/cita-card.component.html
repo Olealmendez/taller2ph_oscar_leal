@@ -1,0 +1,17 @@
+<ion-card color="light" class="ion-no-margin">
+  <ion-card-content>
+    <h1 class="cita-texto">
+      {{ cita.texto }}
+    </h1>
+    
+    <p class="cita-autor ion-text-right">
+      {{ cita.autor }}
+    </p>
+
+    <div class="ion-text-right" *ngIf="mostrarBotonEliminar">
+      <ion-button fill="clear" color="danger" (click)="onEliminar()">
+        <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-card-content>
+</ion-card>
