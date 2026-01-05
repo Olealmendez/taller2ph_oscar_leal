@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { BaseDatosService } from 'src/app/services/base-datos.service';
 import { Cita } from 'src/app/interfaces/cita.interface';
 import { CitaCardComponent } from 'src/app/components/cita-card/cita-card.component';
-import { add, settingsOutline } from 'ionicons/icons'; // Iconos
+import { add, settingsOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 
 @Component({

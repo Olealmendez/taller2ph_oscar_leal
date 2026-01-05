@@ -38,7 +38,7 @@ export class BaseDatosService {
       autor: autor
     };
     this.citas.push(nuevaCita);
-    // await this.db.execute('INSERT INTO citas ...'); 
+    // await this.db.execute('INSERT INTO citas (texto, autor) VALUES (?, ?)', [texto, autor]);
   }
 
   async eliminarCita(id: number) {
